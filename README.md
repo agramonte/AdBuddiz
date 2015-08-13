@@ -1,7 +1,8 @@
 # AdBuddiz
 Marmalade Extension for AdBuddiz
 
-Easy integrate
+Easy integration
+
 1. In the mkb of your project add the extension.
 
 subprojects
