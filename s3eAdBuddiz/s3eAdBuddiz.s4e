@@ -1,0 +1,27 @@
+callbacks
+
+include:
+#include <s3eTypes.h>
+
+typedef enum s3eAdBuddizCallback
+{
+	S3E_ADBUDDIZ_CALLBACK_DIDCACHEAD = 0,
+	S3E_ADBUDDIZ_CALLBACK_DIDSHOWAD = 1,
+    S3E_ADBUDDIZ_CALLBACK_FAILTODISPLAY = 2,
+    S3E_ADBUDDIZ_CALLBACK_DIDCLICK = 3,
+    S3E_ADBUDDIZ_CALLBACK_DIDHIDEAD = 4,
+	S3E_ADBUDDIZ_CALLBACK_MAX
+} s3eAdBuddizCallback;
+
+typedef enum s3eAdBuddizLogLevel
+{
+	S3E_ADBUDDIZLOG_INFO,
+	S3E_ADBUDDIZLOG_ERROR,
+	S3E_ADBUDDIZLOG_SILENT
+} s3eAdBuddizLogLevel;
+
+functions:
+s3eResult s3eAdBuddizInitialize(const char* publisherKey) run_on_os_thread
+s3eResult s3eAdBuddizSetTestMode() run_on_os_thread
+s3eResult s3eAdBuddizShowAd() run_on_os_thread
+s3eResult s3eAdBuddizSetLogLevel(s3eAdBuddizLogLevel logLevel) run_on_os_thread

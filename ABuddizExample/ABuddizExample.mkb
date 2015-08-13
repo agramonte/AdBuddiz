@@ -1,0 +1,24 @@
+#!/usr/bin/env mkb
+
+files
+{
+    (source)
+    ABuddizExample.cpp
+    AppDelegate.cpp
+    AppDelegate.h
+    GameLayer.cpp
+    GameLayer.h
+}
+
+subprojects
+{
+    iwutil
+    iwgl
+    third_party\cocos2dx\cocos2dx\proj.marmalade\cocos2dx
+    ..\s3eAdBuddiz
+}
+
+deployment
+{
+}
+
