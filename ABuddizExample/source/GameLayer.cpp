@@ -1,5 +1,5 @@
 #include "GameLayer.h"
-#include "s3eAdBuddiz.h" //1. Add header file refrence.
+#include "s3eAdBuddiz.h" //1. Add header file reference.
 #include "s3e.h"
 #include "s3eExt.h"
 //1. Ad the header for the extension.
@@ -72,7 +72,7 @@ bool GameLayer::init()
         s3eAdBuddizSetTestMode(); //Optional: Un-Comment this line to get test ads.
         s3eAdBuddizSetLogLevel(S3E_ADBUDDIZLOG_INFO); //Optional: Set log level.
         
-        s3eAdBuddizInitialize("<your app id.>"); //3. Add your publisher key.
+        s3eAdBuddizInitialize("<your app key."); //3. Add your publisher key.
         
         //Optional: Register one or more call backs.
         s3eAdBuddizRegister(S3E_ADBUDDIZ_CALLBACK_DIDCACHEAD, onAdCached, NULL);

@@ -36,6 +36,11 @@ if {{defined I3D_OS_IPHONE}}
         s3eAdBuddiz_platform.mm
         #Add any iphone-specific files here
     }
+
+    options
+    {
+        cflags="-F$CWD/iosframework/"
+    }
 }
 
 if {{defined I3D_OS_WINDOWS}}
