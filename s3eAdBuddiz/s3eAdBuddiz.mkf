@@ -46,7 +46,7 @@ deployments
     android-extra-application-manifest="extras.application.txt"
 
     android-external-jars="lib/android/s3eAdBuddiz.jar"
-	android-external-jars="AdBuddiz-3.0.15.jar"
+	android-external-jars="AdBuddiz.jar"
     android-so="lib/android/libs3eAdBuddiz.so"
 }
 

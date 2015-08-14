@@ -18,9 +18,11 @@ subprojects
 
 -- Inside the check initialize the extension:
 
-s3eAdBuddizInitialize("<your app id.>");   
+// Depending on your app, replace "TEST_PUBLISHER_KEY" with the right publisher key.
+s3eAdBuddizInitialize("TEST_PUBLISHER_KEY");   
 
--- Show ad when needed: s3eAdBuddizShowAd()
+-- Show ad when needed
 
+s3eAdBuddizShowAd()
 
 Note: Example app has detail of the other options.
