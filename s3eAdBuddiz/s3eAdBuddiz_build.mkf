@@ -39,7 +39,7 @@ if {{defined I3D_OS_IPHONE}}
 
     options
     {
-        cflags="-F$CWD/iosframework/"
+        cflags="-F$CWD/incoming/"
     }
 }
 
@@ -147,6 +147,21 @@ if {{defined I3D_OS_WP81}}
         s3eAdBuddiz_platform.cpp
         s3eAdBuddiz_shim.cpp
         #Add any wp81-specific files here
+    }
+}
+
+if {{defined I3D_OS_WIN10}}
+{
+    files
+    {
+        ["h"]
+        (source/win10)
+        s3eAdBuddiz_shim.h
+        ["source"]
+        (use_first_found, source/win10, source/generic)
+        s3eAdBuddiz_platform.cpp
+        s3eAdBuddiz_shim.cpp
+        #Add any win10-specific files here
     }
 }
 

@@ -46,7 +46,7 @@ deployments
     android-extra-application-manifest="extras.application.txt"
 
     android-external-jars="lib/android/s3eAdBuddiz.jar"
-	android-external-jars="AdBuddiz.jar"
+    android-external-jars="incoming/AdBuddiz.jar"
     android-so="lib/android/libs3eAdBuddiz.so"
 }
 
@@ -57,7 +57,7 @@ deployments
     #iphone-link-opts="-framework X" #Use this to bring in any additional link options needed
     iphone-link-lib="s3eAdBuddiz"
     iphone-link-libdir="lib/iphone"
-    iphone-link-opts="-F$CWD/iosframework/ -framework AdBuddiz"
+    iphone-link-opts="-F$CWD/incoming/ -framework AdBuddiz"
     iphone-link-opts="-framework SystemConfiguration" 
     iphone-link-opts="-weak_framework AdSupport"
     iphone-link-opts="-weak_framework StoreKit" 

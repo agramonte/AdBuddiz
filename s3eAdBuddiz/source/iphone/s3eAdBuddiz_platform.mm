@@ -49,6 +49,8 @@ int setLogLevelTo = 2;
 
 @end
 
+
+
 s3eResult s3eAdBuddizInit_platform()
 {
     // Add any platform-specific initialisation code here
@@ -109,4 +111,10 @@ s3eResult s3eAdBuddizSetLogLevel_platform(s3eAdBuddizLogLevel logLevel)
 }
 
 
+void s3eAdBuddizRewardedVideoFetch_platform()
+{
+}
 
+void s3eAdBuddizRewardedVideoShowAd_platform()
+{
+}

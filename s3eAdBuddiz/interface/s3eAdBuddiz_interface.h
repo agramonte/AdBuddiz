@@ -11,6 +11,8 @@ typedef  s3eResult(*s3eAdBuddizInitialize_t)(const char* publisherKey);
 typedef  s3eResult(*s3eAdBuddizSetTestMode_t)();
 typedef  s3eResult(*s3eAdBuddizShowAd_t)();
 typedef  s3eResult(*s3eAdBuddizSetLogLevel_t)(s3eAdBuddizLogLevel logLevel);
+typedef       void(*s3eAdBuddizRewardedVideoFetch_t)();
+typedef       void(*s3eAdBuddizRewardedVideoShowAd_t)();
 
 /**
  * struct that gets filled in by s3eAdBuddizRegister
@@ -23,4 +25,6 @@ typedef struct s3eAdBuddizFuncs
     s3eAdBuddizSetTestMode_t m_s3eAdBuddizSetTestMode;
     s3eAdBuddizShowAd_t m_s3eAdBuddizShowAd;
     s3eAdBuddizSetLogLevel_t m_s3eAdBuddizSetLogLevel;
+    s3eAdBuddizRewardedVideoFetch_t m_s3eAdBuddizRewardedVideoFetch;
+    s3eAdBuddizRewardedVideoShowAd_t m_s3eAdBuddizRewardedVideoShowAd;
 } s3eAdBuddizFuncs;

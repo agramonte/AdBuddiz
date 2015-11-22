@@ -9,17 +9,18 @@ These functions are called via JNI from native code.
  * NOTE: This file was originally written by the extension builder, but will not
  * be overwritten (unless --force is specified) and is intended to be modified.
  */
-
 import com.ideaworks3d.marmalade.LoaderAPI;
 import com.ideaworks3d.marmalade.LoaderActivity;
 import com.purplebrain.adbuddiz.sdk.AdBuddiz;
 import com.purplebrain.adbuddiz.sdk.AdBuddizDelegate;
 import com.purplebrain.adbuddiz.sdk.AdBuddizError;
 import com.purplebrain.adbuddiz.sdk.AdBuddizLogLevel;
+import com.purplebrain.adbuddiz.sdk.AdBuddizRewardedVideoDelegate;
+import com.purplebrain.adbuddiz.sdk.AdBuddizRewardedVideoError;
 
 
 
-class s3eAdBuddiz implements AdBuddizDelegate
+class s3eAdBuddiz implements AdBuddizDelegate, AdBuddizRewardedVideoDelegate
 {
     
     public final static int S3E_ADBUDDIZLOG_INFO = 0;
@@ -79,6 +80,18 @@ class s3eAdBuddiz implements AdBuddizDelegate
         logType = logLevel;
         return 0;
     }
+
+    public void s3eAdBuddizRewardedVideoFetch()
+    {
+        AdBuddiz.RewardedVideo.setDelegate(this);
+        AdBuddiz.RewardedVideo.fetch(LoaderActivity.m_Activity);
+    }
+    public void s3eAdBuddizRewardedVideoShowAd()
+    {
+        AdBuddiz.RewardedVideo.show(LoaderActivity.m_Activity);
+        
+    }
+
     
     @Override
     public void didCacheAd(){
@@ -138,6 +151,31 @@ class s3eAdBuddiz implements AdBuddizDelegate
         
 		native_onFailToDisplayCallback(code);
 	}
+    
+    //Video Reward
+    @Override
+    public void didComplete(){
+        native_onRewardedCompleteCallback();
+    }
+    
+    @Override
+    public void didFetch(){
+        native_onReawardedFetchedCallback();
+    }
+    
+    @Override
+    public void didFail(AdBuddizRewardedVideoError error){
+        native_onRewardedFailedCallback();
+    }
+    
+    @Override
+    public void didNotComplete(){
+        native_onRewardedNotCompleteCallback();
+        
+    }
+    
+    
+    
     ////////////////////////////////////////////////////////////////
     // Native interface
 	private static native void native_onFailToDisplayCallback(int cause);
@@ -145,6 +183,10 @@ class s3eAdBuddiz implements AdBuddizDelegate
     private static native void native_onDidShowAdCallback();
     private static native void native_onDidClickCallback();
     private static native void native_onDidHideAdCallback();
+    private static native void native_onRewardedCompleteCallback();
+    private static native void native_onReawardedFetchedCallback();
+    private static native void native_onRewardedFailedCallback();
+    private static native void native_onRewardedNotCompleteCallback();
     ////////////////////////////////////////////////////////////////
 }
 

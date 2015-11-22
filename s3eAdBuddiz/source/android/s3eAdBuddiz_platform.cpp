@@ -13,13 +13,13 @@
 #include <jni.h>
 #include "IwDebug.h"
 
-
-
 static jobject g_Obj;
 static jmethodID g_s3eAdBuddizInitialize;
 static jmethodID g_s3eAdBuddizSetTestMode;
 static jmethodID g_s3eAdBuddizShowAd;
 static jmethodID g_s3eAdBuddizSetLogLevel;
+static jmethodID g_s3eAdBuddizRewardedVideoFetch;
+static jmethodID g_s3eAdBuddizRewardedVideoShowAd;
 
 void native_onDidCacheAdCallback(JNIEnv * env, jobject obj)
 {
@@ -48,6 +48,23 @@ void native_onDidShowAdCallback(JNIEnv * env, jobject obj)
     s3eEdkCallbacksEnqueue(S3E_EXT_ADBUDDIZ_HASH, S3E_ADBUDDIZ_CALLBACK_DIDSHOWAD);
 }
 
+void native_onRewardedCompleteCallback(){
+    s3eEdkCallbacksEnqueue(S3E_EXT_ADBUDDIZ_HASH, S3E_ADBUDDIZ_CALLBACK_REWARDEDCOMPLETE);
+}
+
+void native_onReawardedFetchedCallback(){
+    s3eEdkCallbacksEnqueue(S3E_EXT_ADBUDDIZ_HASH, S3E_ADBUDDIZ_CALLBACK_REWARDEDFETCHED);
+}
+
+void native_onRewardedFailedCallback(){
+    s3eEdkCallbacksEnqueue(S3E_EXT_ADBUDDIZ_HASH, S3E_ADBUDDIZ_CALLBACK_REWARDEDFAILED);
+}
+
+void native_onRewardedNotCompleteCallback(){
+    s3eEdkCallbacksEnqueue(S3E_EXT_ADBUDDIZ_HASH, S3E_ADBUDDIZ_CALLBACK_REWARDEDNOTCOMPLETE);
+}
+
+
 s3eResult s3eAdBuddizInit_platform()
 {
     // Get the environment from the pointer
@@ -61,6 +78,10 @@ s3eResult s3eAdBuddizInit_platform()
         { "native_onDidShowAdCallback", "()V", (void *)&native_onDidShowAdCallback },
         { "native_onDidCacheAdCallback", "()V", (void *)&native_onDidCacheAdCallback },
         { "native_onFailToDisplayCallback", "(I)V", (void *)&native_onFailToDisplayCallback },
+        { "native_onRewardedCompleteCallback", "()V", (void *)&native_onRewardedCompleteCallback },
+        { "native_onReawardedFetchedCallback", "()V", (void *)&native_onReawardedFetchedCallback },
+        { "native_onRewardedFailedCallback", "()V", (void *)&native_onRewardedFailedCallback },
+        { "native_onRewardedNotCompleteCallback", "()V", (void *)&native_onRewardedNotCompleteCallback },
     };
 
     // Get the extension class
@@ -95,10 +116,18 @@ s3eResult s3eAdBuddizInit_platform()
     if (!g_s3eAdBuddizSetLogLevel)
         goto fail;
 
-    if(env->RegisterNatives(cls, nativeMethodDefs, sizeof(nativeMethodDefs)/sizeof(nativeMethodDefs[0])))
+    g_s3eAdBuddizRewardedVideoFetch = env->GetMethodID(cls, "s3eAdBuddizRewardedVideoFetch", "()V");
+    if (!g_s3eAdBuddizRewardedVideoFetch)
         goto fail;
-    
-    
+
+    g_s3eAdBuddizRewardedVideoShowAd = env->GetMethodID(cls, "s3eAdBuddizRewardedVideoShowAd", "()V");
+    if (!g_s3eAdBuddizRewardedVideoShowAd)
+        goto fail;
+
+
+	if(env->RegisterNatives(cls, nativeMethodDefs, sizeof(nativeMethodDefs)/sizeof(nativeMethodDefs[0])))
+        goto fail;
+
     IwTrace(ADBUDDIZ, ("ADBUDDIZ init success"));
     g_Obj = env->NewGlobalRef(obj);
     env->DeleteLocalRef(obj);
@@ -155,8 +184,14 @@ s3eResult s3eAdBuddizSetLogLevel_platform(s3eAdBuddizLogLevel logLevel)
     return (s3eResult)env->CallIntMethod(g_Obj, g_s3eAdBuddizSetLogLevel, logLevel);
 }
 
+void s3eAdBuddizRewardedVideoFetch_platform()
+{
+    JNIEnv* env = s3eEdkJNIGetEnv();
+    env->CallVoidMethod(g_Obj, g_s3eAdBuddizRewardedVideoFetch);
+}
 
-
-
-
-
+void s3eAdBuddizRewardedVideoShowAd_platform()
+{
+    JNIEnv* env = s3eEdkJNIGetEnv();
+    env->CallVoidMethod(g_Obj, g_s3eAdBuddizRewardedVideoShowAd);
+}

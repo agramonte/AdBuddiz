@@ -42,3 +42,13 @@ s3eResult s3eAdBuddizSetLogLevel(s3eAdBuddizLogLevel logLevel)
 {
 	return s3eAdBuddizSetLogLevel_platform(logLevel);
 }
+
+void s3eAdBuddizRewardedVideoFetch()
+{
+	s3eAdBuddizRewardedVideoFetch_platform();
+}
+
+void s3eAdBuddizRewardedVideoShowAd()
+{
+	s3eAdBuddizRewardedVideoShowAd_platform();
+}

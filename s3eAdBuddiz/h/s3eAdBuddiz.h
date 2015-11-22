@@ -25,6 +25,10 @@ typedef enum s3eAdBuddizCallback
     S3E_ADBUDDIZ_CALLBACK_FAILTODISPLAY = 2,
     S3E_ADBUDDIZ_CALLBACK_DIDCLICK = 3,
     S3E_ADBUDDIZ_CALLBACK_DIDHIDEAD = 4,
+    S3E_ADBUDDIZ_CALLBACK_REWARDEDCOMPLETE = 5,
+    S3E_ADBUDDIZ_CALLBACK_REWARDEDFETCHED = 6,
+    S3E_ADBUDDIZ_CALLBACK_REWARDEDFAILED = 7,
+    S3E_ADBUDDIZ_CALLBACK_REWARDEDNOTCOMPLETE = 8,
 	S3E_ADBUDDIZ_CALLBACK_MAX
 } s3eAdBuddizCallback;
 
@@ -39,7 +43,8 @@ S3E_BEGIN_C_DECL
 // \endcond
 
 /**
- * Returns S3E_TRUE if the AdBuddiz extension is available.
+ * Report if the AdBuddiz extension is available.
+ * @return S3E_TRUE if the AdBuddiz extension is available. S3E_FALSE otherwise.
  */
 s3eBool s3eAdBuddizAvailable();
 
@@ -49,7 +54,7 @@ s3eBool s3eAdBuddizAvailable();
  * The available callback types are listed in @ref s3eAdBuddizCallback.
  * @param cbid ID of the event for which to register.
  * @param fn callback function.
- * @param userdata Value to pass to the @e userdata parameter of @e NotifyFunc.
+ * @param userData Value to pass to the @e userData parameter of @e NotifyFunc.
  * @return
  *  - @ref S3E_RESULT_SUCCESS if no error occurred.
  *  - @ref S3E_RESULT_ERROR if the operation failed.\n
@@ -81,6 +86,10 @@ s3eResult s3eAdBuddizSetTestMode();
 s3eResult s3eAdBuddizShowAd();
 
 s3eResult s3eAdBuddizSetLogLevel(s3eAdBuddizLogLevel logLevel);
+
+void s3eAdBuddizRewardedVideoFetch();
+
+void s3eAdBuddizRewardedVideoShowAd();
 
 // \cond HIDDEN_DEFINES
 S3E_END_C_DECL

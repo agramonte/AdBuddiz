@@ -2,11 +2,14 @@ Archive member included because of file (symbol)
 
 /Applications/Marmalade.app/Contents/s3e/edk/lib/android/libedk.a(edk_helpers.o)
                               release/s3eAdBuddiz_platform.os (s3eEdkThreadRunOnOS)
+/Applications/Marmalade.app/Contents/s3e/edk/lib/android/libedk.a(android_edk_marker.o)
+                              -u libplaceholderplaceholderplaceholderplaceholderplaceholder
 
 Discarded input sections
 
  .note.GNU-stack
-                0x00000000        0x0 /Users/adriangomez/android-ndk-r10d//platforms/android-14/arch-arm/usr/lib/crtbegin_so.o
+                0x00000000        0x0 /Users/adriangomez/android-ndk-r10d/platforms/android-14/arch-arm/usr/lib/crtbegin_so.o
+ .group         0x00000000        0x8 release/s3eAdBuddiz_platform.os
  .group         0x00000000        0x8 release/s3eAdBuddiz_platform.os
  .group         0x00000000        0x8 release/s3eAdBuddiz_platform.os
  .note.GNU-stack
@@ -18,7 +21,9 @@ Discarded input sections
  .note.GNU-stack
                 0x00000000        0x0 /Applications/Marmalade.app/Contents/s3e/edk/lib/android/libedk.a(edk_helpers.o)
  .note.GNU-stack
-                0x00000000        0x0 /Users/adriangomez/android-ndk-r10d//platforms/android-14/arch-arm/usr/lib/crtend_so.o
+                0x00000000        0x0 /Applications/Marmalade.app/Contents/s3e/edk/lib/android/libedk.a(android_edk_marker.o)
+ .note.GNU-stack
+                0x00000000        0x0 /Users/adriangomez/android-ndk-r10d/platforms/android-14/arch-arm/usr/lib/crtend_so.o
 
 Memory map
 
@@ -30,106 +35,123 @@ Memory map
 .interp         0x00000114       0x13
  ** fill        0x00000114       0x13
 
-.dynsym         0x00000128       0xf0
- ** dynsym      0x00000128       0xf0
+.dynsym         0x00000128      0x110
+ ** dynsym      0x00000128      0x110
 
-.dynstr         0x00000218      0x15b
+.dynstr         0x00000238      0x171
  ** string table
-                0x00000218      0x15b
+                0x00000238      0x171
 
-.hash           0x00000374       0x50
- ** hash        0x00000374       0x50
+.hash           0x000003ac       0x58
+ ** hash        0x000003ac       0x58
 
-.rel.dyn        0x000003c4       0xb0
+.rel.dyn        0x00000404      0x120
  ** dynamic relocs
-                0x000003c4       0xb0
+                0x00000404      0x120
 
-.rel.plt        0x00000474       0x50
+.rel.plt        0x00000524       0x58
  ** dynamic relocs
-                0x00000474       0x50
+                0x00000524       0x58
 
-.plt            0x000004c4       0x8c
- ** PLT         0x000004c4       0x8c
+.plt            0x0000057c       0x98
+ ** PLT         0x0000057c       0x98
 
-.text           0x00000550      0x9d4
- .text.exit     0x00000550       0x10 /Users/adriangomez/android-ndk-r10d//platforms/android-14/arch-arm/usr/lib/crtbegin_so.o
-                0x00000550                __on_dlclose
- .text          0x00000560       0x34 /Users/adriangomez/android-ndk-r10d//platforms/android-14/arch-arm/usr/lib/crtbegin_so.o
-                0x00000560                __atexit_handler_wrapper
-                0x00000574                atexit
- .text          0x00000594      0x638 release/s3eAdBuddiz_platform.os
-                0x00000594                native_onDidCacheAdCallback(_JNIEnv*, _jobject*)
-                0x000005cc                native_onFailToDisplayCallback(_JNIEnv*, _jobject*, int)
-                0x00000610                native_onDidHideAdCallback(_JNIEnv*, _jobject*)
-                0x00000648                native_onDidClickCallback(_JNIEnv*, _jobject*)
-                0x00000680                native_onDidShowAdCallback(_JNIEnv*, _jobject*)
-                0x00000770                s3eAdBuddizInit_platform()
-                0x00000a08                s3eAdBuddizTerminate_platform()
-                0x00000a64                s3eAdBuddizInitialize_platform(char const*)
-                0x00000ad4                s3eAdBuddizSetTestMode_platform()
-                0x00000b24                s3eAdBuddizShowAd_platform()
-                0x00000b74                s3eAdBuddizSetLogLevel_platform(s3eAdBuddizLogLevel)
+.text           0x00000614      0xc68
+ .text.exit     0x00000614       0x10 /Users/adriangomez/android-ndk-r10d/platforms/android-14/arch-arm/usr/lib/crtbegin_so.o
+                0x00000614                __on_dlclose
+ .text          0x00000624       0x34 /Users/adriangomez/android-ndk-r10d/platforms/android-14/arch-arm/usr/lib/crtbegin_so.o
+                0x00000624                __atexit_handler_wrapper
+                0x00000638                atexit
+ .text          0x00000658      0x810 release/s3eAdBuddiz_platform.os
+                0x00000658                native_onDidCacheAdCallback(_JNIEnv*, _jobject*)
+                0x00000690                native_onFailToDisplayCallback(_JNIEnv*, _jobject*, int)
+                0x000006d4                native_onDidHideAdCallback(_JNIEnv*, _jobject*)
+                0x0000070c                native_onDidClickCallback(_JNIEnv*, _jobject*)
+                0x00000744                native_onDidShowAdCallback(_JNIEnv*, _jobject*)
+                0x0000077c                native_onRewardedCompleteCallback()
+                0x000007b4                native_onReawardedFetchedCallback()
+                0x000007ec                native_onRewardedFailedCallback()
+                0x00000824                native_onRewardedNotCompleteCallback()
+                0x00000914                s3eAdBuddizInit_platform()
+                0x00000c04                s3eAdBuddizTerminate_platform()
+                0x00000c60                s3eAdBuddizInitialize_platform(char const*)
+                0x00000cd0                s3eAdBuddizSetTestMode_platform()
+                0x00000d20                s3eAdBuddizShowAd_platform()
+                0x00000d70                s3eAdBuddizSetLogLevel_platform(s3eAdBuddizLogLevel)
+                0x00000dc8                s3eAdBuddizRewardedVideoFetch_platform()
+                0x00000e18                s3eAdBuddizRewardedVideoShowAd_platform()
  .text._ZN7_JNIEnv9NewObjectEP7_jclassP10_jmethodIDz
-                0x00000bcc       0x38 release/s3eAdBuddiz_platform.os
-                0x00000bcc                _JNIEnv::NewObject(_jclass*, _jmethodID*, ...)
+                0x00000e68       0x38 release/s3eAdBuddiz_platform.os
+                0x00000e68                _JNIEnv::NewObject(_jclass*, _jmethodID*, ...)
  .text._ZN7_JNIEnv13CallIntMethodEP8_jobjectP10_jmethodIDz
-                0x00000c04       0x38 release/s3eAdBuddiz_platform.os
-                0x00000c04                _JNIEnv::CallIntMethod(_jobject*, _jmethodID*, ...)
- .text          0x00000c3c       0x18 release/s3eAdBuddiz.os
-                0x00000c3c                s3eAdBuddizInit()
-                0x00000c40                s3eAdBuddizTerminate()
-                0x00000c44                s3eAdBuddizInitialize
-                0x00000c48                s3eAdBuddizSetTestMode
-                0x00000c4c                s3eAdBuddizShowAd
-                0x00000c50                s3eAdBuddizSetLogLevel
- .text          0x00000c54      0x240 release/s3eAdBuddiz_register.os
-                0x00000c54                s3eAdBuddizRegister
-                0x00000c84                s3eAdBuddizUnRegister
-                0x00000d0c                s3eAdBuddizRegisterExt()
-                0x00000dd0                RegisterExt
- .text          0x00000e94        0x0 /Applications/Marmalade.app/Contents/s3e/edk/lib/android/libedk.a(edk_helpers.o)
+                0x00000ea0       0x38 release/s3eAdBuddiz_platform.os
+                0x00000ea0                _JNIEnv::CallIntMethod(_jobject*, _jmethodID*, ...)
+ .text._ZN7_JNIEnv14CallVoidMethodEP8_jobjectP10_jmethodIDz
+                0x00000ed8       0x38 release/s3eAdBuddiz_platform.os
+                0x00000ed8                _JNIEnv::CallVoidMethod(_jobject*, _jmethodID*, ...)
+ .text          0x00000f10       0x20 release/s3eAdBuddiz.os
+                0x00000f10                s3eAdBuddizInit()
+                0x00000f14                s3eAdBuddizTerminate()
+                0x00000f18                s3eAdBuddizInitialize
+                0x00000f1c                s3eAdBuddizSetTestMode
+                0x00000f20                s3eAdBuddizShowAd
+                0x00000f24                s3eAdBuddizSetLogLevel
+                0x00000f28                s3eAdBuddizRewardedVideoFetch
+                0x00000f2c                s3eAdBuddizRewardedVideoShowAd
+ .text          0x00000f30      0x2b8 release/s3eAdBuddiz_register.os
+                0x00000f30                s3eAdBuddizRegister
+                0x00000f60                s3eAdBuddizUnRegister
+                0x00001010                s3eAdBuddizRegisterExt()
+                0x000010fc                RegisterExt
+ .text          0x000011e8        0x0 /Applications/Marmalade.app/Contents/s3e/edk/lib/android/libedk.a(edk_helpers.o)
  .text.s3eEdkErrorSetString
-                0x00000e94       0x30 /Applications/Marmalade.app/Contents/s3e/edk/lib/android/libedk.a(edk_helpers.o)
-                0x00000e94                s3eEdkErrorSetString
+                0x000011e8       0x30 /Applications/Marmalade.app/Contents/s3e/edk/lib/android/libedk.a(edk_helpers.o)
+                0x000011e8                s3eEdkErrorSetString
  .text.s3eEdkThreadRunOnOS
-                0x00000ec4       0x30 /Applications/Marmalade.app/Contents/s3e/edk/lib/android/libedk.a(edk_helpers.o)
-                0x00000ec4                s3eEdkThreadRunOnOS
+                0x00001218       0x30 /Applications/Marmalade.app/Contents/s3e/edk/lib/android/libedk.a(edk_helpers.o)
+                0x00001218                s3eEdkThreadRunOnOS
  .text.s3eEdkThreadRunOnOSAsync
-                0xffffffffffffffff       0x30 /Applications/Marmalade.app/Contents/s3e/edk/lib/android/libedk.a(edk_helpers.o)
-                0x00000ef4                s3eEdkThreadRunOnOSAsync
- .text          0x00000f24        0x0 /Users/adriangomez/android-ndk-r10d//platforms/android-14/arch-arm/usr/lib/crtend_so.o
+                0x00001248       0x30 /Applications/Marmalade.app/Contents/s3e/edk/lib/android/libedk.a(edk_helpers.o)
+                0x00001248                s3eEdkThreadRunOnOSAsync
+ .text          0x00001278        0x0 /Applications/Marmalade.app/Contents/s3e/edk/lib/android/libedk.a(android_edk_marker.o)
+ .text.libplaceholderplaceholderplaceholderplaceholderplaceholder
+                0xffffffffffffffff        0x4 /Applications/Marmalade.app/Contents/s3e/edk/lib/android/libedk.a(android_edk_marker.o)
+                0x00001278                libplaceholderplaceholderplaceholderplaceholderplaceholder
+ .text          0x0000127c        0x0 /Users/adriangomez/android-ndk-r10d/platforms/android-14/arch-arm/usr/lib/crtend_so.o
 
-.rodata         0x00000f24      0x12d
+.rodata         0x0000127c      0x1fd
  ** merge strings
-                0x00000f24      0x12d
+                0x0000127c      0x1fd
 
-.fini_array     0x00002ea8        0x8
- .fini_array    0x00002ea8        0x4 /Users/adriangomez/android-ndk-r10d//platforms/android-14/arch-arm/usr/lib/crtbegin_so.o
- .fini_array    0x00002eac        0x4 /Users/adriangomez/android-ndk-r10d//platforms/android-14/arch-arm/usr/lib/crtend_so.o
+.fini_array     0x00002e9c        0x8
+ .fini_array    0x00002e9c        0x4 /Users/adriangomez/android-ndk-r10d/platforms/android-14/arch-arm/usr/lib/crtbegin_so.o
+ .fini_array    0x00002ea0        0x4 /Users/adriangomez/android-ndk-r10d/platforms/android-14/arch-arm/usr/lib/crtend_so.o
 
-.init_array     0x00002eb0        0x4
- .init_array    0x00002eb0        0x4 /Users/adriangomez/android-ndk-r10d//platforms/android-14/arch-arm/usr/lib/crtend_so.o
+.init_array     0x00002ea4        0x4
+ .init_array    0x00002ea4        0x4 /Users/adriangomez/android-ndk-r10d/platforms/android-14/arch-arm/usr/lib/crtend_so.o
 
-.dynamic        0x00002eb4      0x100
- ** dynamic     0x00002eb4      0x100
+.dynamic        0x00002ea8      0x100
+ ** dynamic     0x00002ea8      0x100
 
-.got            0x00002fb4       0x4c
- ** GOT         0x00002fb4       0x18
- ** GOT PLT     0x00002fcc       0x34
+.got            0x00002fa8       0x58
+ ** GOT         0x00002fa8       0x20
+ ** GOT PLT     0x00002fc8       0x38
 
-.data           0x00003000       0x40
- .data          0x00003000        0x4 /Users/adriangomez/android-ndk-r10d//platforms/android-14/arch-arm/usr/lib/crtbegin_so.o
+.data           0x00003000       0x70
+ .data          0x00003000        0x4 /Users/adriangomez/android-ndk-r10d/platforms/android-14/arch-arm/usr/lib/crtbegin_so.o
                 0x00003000                __dso_handle
- .data          0x00003004       0x3c release/s3eAdBuddiz_platform.os
- .data          0x00003040        0x0 release/s3eAdBuddiz.os
- .data          0x00003040        0x0 release/s3eAdBuddiz_register.os
- .data          0x00003040        0x0 /Applications/Marmalade.app/Contents/s3e/edk/lib/android/libedk.a(edk_helpers.o)
- .data          0x00003040        0x0 /Users/adriangomez/android-ndk-r10d//platforms/android-14/arch-arm/usr/lib/crtend_so.o
+ .data          0x00003004       0x6c release/s3eAdBuddiz_platform.os
+ .data          0x00003070        0x0 release/s3eAdBuddiz.os
+ .data          0x00003070        0x0 release/s3eAdBuddiz_register.os
+ .data          0x00003070        0x0 /Applications/Marmalade.app/Contents/s3e/edk/lib/android/libedk.a(edk_helpers.o)
+ .data          0x00003070        0x0 /Applications/Marmalade.app/Contents/s3e/edk/lib/android/libedk.a(android_edk_marker.o)
+ .data          0x00003070        0x0 /Users/adriangomez/android-ndk-r10d/platforms/android-14/arch-arm/usr/lib/crtend_so.o
 
-.bss            0x00003040       0x14
- .bss           0x00003040        0x0 /Users/adriangomez/android-ndk-r10d//platforms/android-14/arch-arm/usr/lib/crtbegin_so.o
- .bss           0x00003040       0x14 release/s3eAdBuddiz_platform.os
- .bss           0x00003054        0x0 release/s3eAdBuddiz.os
- .bss           0x00003054        0x0 release/s3eAdBuddiz_register.os
- .bss           0x00003054        0x0 /Applications/Marmalade.app/Contents/s3e/edk/lib/android/libedk.a(edk_helpers.o)
- .bss           0x00003054        0x0 /Users/adriangomez/android-ndk-r10d//platforms/android-14/arch-arm/usr/lib/crtend_so.o
+.bss            0x00003070       0x1c
+ .bss           0x00003070        0x0 /Users/adriangomez/android-ndk-r10d/platforms/android-14/arch-arm/usr/lib/crtbegin_so.o
+ .bss           0x00003070       0x1c release/s3eAdBuddiz_platform.os
+ .bss           0x0000308c        0x0 release/s3eAdBuddiz.os
+ .bss           0x0000308c        0x0 release/s3eAdBuddiz_register.os
+ .bss           0x0000308c        0x0 /Applications/Marmalade.app/Contents/s3e/edk/lib/android/libedk.a(edk_helpers.o)
+ .bss           0x0000308c        0x0 /Applications/Marmalade.app/Contents/s3e/edk/lib/android/libedk.a(android_edk_marker.o)
+ .bss           0x0000308c        0x0 /Users/adriangomez/android-ndk-r10d/platforms/android-14/arch-arm/usr/lib/crtend_so.o

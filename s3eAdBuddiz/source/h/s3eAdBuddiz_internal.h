@@ -50,5 +50,9 @@ s3eResult s3eAdBuddizShowAd_platform();
 
 s3eResult s3eAdBuddizSetLogLevel_platform(s3eAdBuddizLogLevel logLevel);
 
+void s3eAdBuddizRewardedVideoFetch_platform();
+
+void s3eAdBuddizRewardedVideoShowAd_platform();
+
 
 #endif /* !S3EADBUDDIZ_INTERNAL_H */

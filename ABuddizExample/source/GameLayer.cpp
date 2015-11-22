@@ -3,17 +3,23 @@
 #include "s3e.h"
 #include "s3eExt.h"
 //1. Ad the header for the extension.
+bool alreadyShown = false;
 
 static int32 onAdCached(void* systemData, void* userData)
 {
     CCLog("---------------------------Ad cached.");
     
+    if (alreadyShown) {
+        return 0;
+    }
     
     if (s3eAdBuddizShowAd() == S3E_RESULT_SUCCESS){ //4. Show ad.
         CCLog("---------------------------Ad was available to show.");
     } else {
         CCLog("---------------------------Not available to show.");
     }
+    
+    alreadyShown = true;
     return 0;
 }
 
@@ -39,6 +45,35 @@ static int32 onDidClickAd(void* systemData, void* userData)
 static int32 onDidHideAd(void* systemData, void* userData)
 {
     CCLog("---------------------------Ad is hidden.");
+    
+    
+    return 0;
+}
+
+static int32 onRewardComplete(void* systemData, void* userData)
+{
+    CCLog("---------------------------Reward Complete.");
+    return 0;
+}
+
+static int32 onRewardFetched(void* systemData, void* userData)
+{
+    CCLog("---------------------------Reward Fetched.");
+    
+    CCLog("---------------------------Showing reward ad.");
+    s3eAdBuddizRewardedVideoShowAd();
+    return 0;
+}
+
+static int32 onRewardFailed(void* systemData, void* userData)
+{
+    CCLog("---------------------------Reward Failed.");
+    return 0;
+}
+
+static int32 onRewardNotComplete(void* systemData, void* userData)
+{
+    CCLog("---------------------------Reward Not Complete.");
     return 0;
 }
 
@@ -72,7 +107,6 @@ bool GameLayer::init()
         s3eAdBuddizSetTestMode(); //Optional: Un-Comment this line to get test ads.
         s3eAdBuddizSetLogLevel(S3E_ADBUDDIZLOG_INFO); //Optional: Set log level.
         
-        s3eAdBuddizInitialize("<your app key."); //3. Add your publisher key.
         
         //Optional: Register one or more call backs.
         s3eAdBuddizRegister(S3E_ADBUDDIZ_CALLBACK_DIDCACHEAD, onAdCached, NULL);
@@ -81,6 +115,16 @@ bool GameLayer::init()
         s3eAdBuddizRegister(S3E_ADBUDDIZ_CALLBACK_DIDCLICK, onDidClickAd, NULL);
         s3eAdBuddizRegister(S3E_ADBUDDIZ_CALLBACK_DIDHIDEAD, onDidHideAd, NULL);
         
+        //Required for Rewards.
+        s3eAdBuddizRegister(S3E_ADBUDDIZ_CALLBACK_REWARDEDCOMPLETE, onRewardComplete, NULL);
+        
+        //Optional for Reward Ad.
+        s3eAdBuddizRegister(S3E_ADBUDDIZ_CALLBACK_REWARDEDFETCHED, onRewardFetched, NULL);
+        s3eAdBuddizRegister(S3E_ADBUDDIZ_CALLBACK_REWARDEDFAILED, onRewardFailed, NULL);
+        s3eAdBuddizRegister(S3E_ADBUDDIZ_CALLBACK_REWARDEDNOTCOMPLETE, onRewardNotComplete, NULL);
+        
+        s3eAdBuddizInitialize("dd290ecd-f348-40be-b684-371221813ad2"); //3. Add your publisher key.
+        s3eAdBuddizRewardedVideoFetch();
         
     }
 

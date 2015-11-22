@@ -48,6 +48,18 @@ static s3eResult s3eAdBuddizSetLogLevel_wrap(s3eAdBuddizLogLevel logLevel)
     return (s3eResult)(intptr_t)s3eEdkThreadRunOnOS((s3eEdkThreadFunc)s3eAdBuddizSetLogLevel, 1, logLevel);
 }
 
+static void s3eAdBuddizRewardedVideoFetch_wrap()
+{
+    IwTrace(ADBUDDIZ_VERBOSE, ("calling s3eAdBuddiz func on main thread: s3eAdBuddizRewardedVideoFetch"));
+    s3eEdkThreadRunOnOS((s3eEdkThreadFunc)s3eAdBuddizRewardedVideoFetch, 0);
+}
+
+static void s3eAdBuddizRewardedVideoShowAd_wrap()
+{
+    IwTrace(ADBUDDIZ_VERBOSE, ("calling s3eAdBuddiz func on main thread: s3eAdBuddizRewardedVideoShowAd"));
+    s3eEdkThreadRunOnOS((s3eEdkThreadFunc)s3eAdBuddizRewardedVideoShowAd, 0);
+}
+
 #define s3eAdBuddizInitialize s3eAdBuddizInitialize_wrap
 
 #define s3eAdBuddizSetTestMode s3eAdBuddizSetTestMode_wrap
@@ -55,6 +67,10 @@ static s3eResult s3eAdBuddizSetLogLevel_wrap(s3eAdBuddizLogLevel logLevel)
 #define s3eAdBuddizShowAd s3eAdBuddizShowAd_wrap
 
 #define s3eAdBuddizSetLogLevel s3eAdBuddizSetLogLevel_wrap
+
+#define s3eAdBuddizRewardedVideoFetch s3eAdBuddizRewardedVideoFetch_wrap
+
+#define s3eAdBuddizRewardedVideoShowAd s3eAdBuddizRewardedVideoShowAd_wrap
 
 
 #endif
@@ -72,18 +88,20 @@ s3eResult s3eAdBuddizUnRegister(s3eAdBuddizCallback cbid, s3eCallback fn)
 void s3eAdBuddizRegisterExt()
 {
     /* fill in the function pointer struct for this extension */
-    void* funcPtrs[6];
+    void* funcPtrs[8];
     funcPtrs[0] = (void*)s3eAdBuddizRegister;
     funcPtrs[1] = (void*)s3eAdBuddizUnRegister;
     funcPtrs[2] = (void*)s3eAdBuddizInitialize;
     funcPtrs[3] = (void*)s3eAdBuddizSetTestMode;
     funcPtrs[4] = (void*)s3eAdBuddizShowAd;
     funcPtrs[5] = (void*)s3eAdBuddizSetLogLevel;
+    funcPtrs[6] = (void*)s3eAdBuddizRewardedVideoFetch;
+    funcPtrs[7] = (void*)s3eAdBuddizRewardedVideoShowAd;
 
     /*
      * Flags that specify the extension's use of locking and stackswitching
      */
-    int flags[6] = { 0 };
+    int flags[8] = { 0 };
 
     /*
      * Register the extension

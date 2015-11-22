@@ -185,3 +185,43 @@ s3eResult s3eAdBuddizSetLogLevel(s3eAdBuddizLogLevel logLevel)
 
     return ret;
 }
+
+void s3eAdBuddizRewardedVideoFetch()
+{
+    IwTrace(ADBUDDIZ_VERBOSE, ("calling s3eAdBuddiz[6] func: s3eAdBuddizRewardedVideoFetch"));
+
+    if (!_extLoad())
+        return;
+
+#ifdef LOADER_CALL_LOCK
+    s3eDeviceLoaderCallStart(S3E_TRUE, (void*)g_Ext.m_s3eAdBuddizRewardedVideoFetch);
+#endif
+
+    g_Ext.m_s3eAdBuddizRewardedVideoFetch();
+
+#ifdef LOADER_CALL_LOCK
+    s3eDeviceLoaderCallDone(S3E_TRUE, (void*)g_Ext.m_s3eAdBuddizRewardedVideoFetch);
+#endif
+
+    return;
+}
+
+void s3eAdBuddizRewardedVideoShowAd()
+{
+    IwTrace(ADBUDDIZ_VERBOSE, ("calling s3eAdBuddiz[7] func: s3eAdBuddizRewardedVideoShowAd"));
+
+    if (!_extLoad())
+        return;
+
+#ifdef LOADER_CALL_LOCK
+    s3eDeviceLoaderCallStart(S3E_TRUE, (void*)g_Ext.m_s3eAdBuddizRewardedVideoShowAd);
+#endif
+
+    g_Ext.m_s3eAdBuddizRewardedVideoShowAd();
+
+#ifdef LOADER_CALL_LOCK
+    s3eDeviceLoaderCallDone(S3E_TRUE, (void*)g_Ext.m_s3eAdBuddizRewardedVideoShowAd);
+#endif
+
+    return;
+}
