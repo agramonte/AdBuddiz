@@ -3,7 +3,7 @@
 //  Copyright (c) 2015 Purple Brain. All rights reserved.
 //
 
-#import "AdBuddizRewardedVideoDelegate.h"
+#import <AdBuddiz/AdBuddizRewardedVideoDelegate.h>
 
 @interface AdBuddizRewardedVideo : NSObject
 
@@ -67,6 +67,6 @@
  @param error, the AdBuddizRewardedVideoError code
  @see http://publishers.adbuddiz.com/portal/support
  */
-- (NSString *)nameForError:(AdBuddizRewardedVideoError)error;
+- (NSString *)nameForError:(AdBuddizError)error;
 
 @end

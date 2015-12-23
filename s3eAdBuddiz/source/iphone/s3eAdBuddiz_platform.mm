@@ -18,6 +18,35 @@
 BOOL setTestMode = false;
 int setLogLevelTo = 2;
 
+@interface s3eAdBuddizRewardedVideoDelegate: NSObject<AdBuddizRewardedVideoDelegate>
+@end
+
+@implementation s3eAdBuddizRewardedVideoDelegate
+
+
+- (void)didFetch // Next rewarded video is ready to be displayed
+{
+    s3eEdkCallbacksEnqueue(S3E_EXT_ADBUDDIZ_HASH, S3E_ADBUDDIZ_CALLBACK_REWARDEDFETCHED);
+}
+
+- (void)didComplete // User closed the ad after having fully watched the video
+{
+    s3eEdkCallbacksEnqueue(S3E_EXT_ADBUDDIZ_HASH, S3E_ADBUDDIZ_CALLBACK_REWARDEDCOMPLETE);
+}
+
+- (void)didFail:(AdBuddizError) error // Something went wrong when fetching or showing a video
+{
+    s3eEdkCallbacksEnqueue(S3E_EXT_ADBUDDIZ_HASH, S3E_ADBUDDIZ_CALLBACK_REWARDEDFAILED);
+}
+
+- (void)didNotComplete // Media player encountered an error
+{
+    s3eEdkCallbacksEnqueue(S3E_EXT_ADBUDDIZ_HASH, S3E_ADBUDDIZ_CALLBACK_REWARDEDNOTCOMPLETE);
+}
+
+@end
+
+
 @interface s3eAdBuddizDelegate: NSObject<AdBuddizDelegate>
 @end
 
@@ -47,6 +76,8 @@ int setLogLevelTo = 2;
     
 }// When an Ad was hidden
 
+
+
 @end
 
 
@@ -69,7 +100,7 @@ s3eResult s3eAdBuddizInitialize_platform(const char* publisherKey)
     [AdBuddiz setPublisherKey:key];
     
     [AdBuddiz setDelegate:[s3eAdBuddizDelegate alloc]];
-
+    [AdBuddiz.RewardedVideo setDelegate:[s3eAdBuddizRewardedVideoDelegate alloc]];
     
     if (setLogLevelTo == 0){
         [AdBuddiz setLogLevel:ABLogLevelInfo];
@@ -113,8 +144,11 @@ s3eResult s3eAdBuddizSetLogLevel_platform(s3eAdBuddizLogLevel logLevel)
 
 void s3eAdBuddizRewardedVideoFetch_platform()
 {
+    [AdBuddiz.RewardedVideo fetch];
+    
 }
 
 void s3eAdBuddizRewardedVideoShowAd_platform()
 {
+    [AdBuddiz.RewardedVideo show];
 }

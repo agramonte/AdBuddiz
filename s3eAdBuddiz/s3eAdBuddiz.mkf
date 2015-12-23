@@ -59,6 +59,8 @@ deployments
     iphone-link-libdir="lib/iphone"
     iphone-link-opts="-F$CWD/incoming/ -framework AdBuddiz"
     iphone-link-opts="-framework SystemConfiguration" 
+    iphone-link-opts="-framework AVFoundation"
     iphone-link-opts="-weak_framework AdSupport"
-    iphone-link-opts="-weak_framework StoreKit" 
+    iphone-link-opts="-weak_framework StoreKit"
+    iphone-extra-plist='s3eAdBuddiz.plist' 
 }

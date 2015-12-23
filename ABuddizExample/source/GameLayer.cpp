@@ -13,13 +13,13 @@ static int32 onAdCached(void* systemData, void* userData)
         return 0;
     }
     
-    if (s3eAdBuddizShowAd() == S3E_RESULT_SUCCESS){ //4. Show ad.
-        CCLog("---------------------------Ad was available to show.");
-    } else {
-        CCLog("---------------------------Not available to show.");
-    }
+    //if (s3eAdBuddizShowAd() == S3E_RESULT_SUCCESS){ //4. Show ad.
+      //  CCLog("---------------------------Ad was available to show.");
+    //} else {
+    //    CCLog("---------------------------Not available to show.");
+    //}
     
-    alreadyShown = true;
+    //alreadyShown = true;
     return 0;
 }
 
@@ -123,7 +123,8 @@ bool GameLayer::init()
         s3eAdBuddizRegister(S3E_ADBUDDIZ_CALLBACK_REWARDEDFAILED, onRewardFailed, NULL);
         s3eAdBuddizRegister(S3E_ADBUDDIZ_CALLBACK_REWARDEDNOTCOMPLETE, onRewardNotComplete, NULL);
         
-        s3eAdBuddizInitialize("dd290ecd-f348-40be-b684-371221813ad2"); //3. Add your publisher key.
+
+        s3eAdBuddizInitialize("d851db02-1816-4bdb-ae5c-497a1089116b"); //3. Add your publisher key.
         s3eAdBuddizRewardedVideoFetch();
         
     }

@@ -2,20 +2,17 @@
 //  AdBuddizRewardedVideoDelegate.h
 //  Copyright (c) 2015 Purple Brain. All rights reserved.
 //
-
-typedef enum {
-    UNIMPLEMENTED = -1
-} AdBuddizRewardedVideoError;
+#import "AdBuddizDelegate.h"
 
 @protocol AdBuddizRewardedVideoDelegate <NSObject>
+
+/*! @brief Called when an Ad has been displayed to user. */
+- (void)didComplete;
 
 @optional
 
 /*! @brief Called when an Ad has been downloaded and is ready to show. */
 - (void)didFetch;
-
-/*! @brief Called when an Ad has been displayed to user. */
-- (void)didComplete;
 
 /*! @brief Called when an Ad has been displayed to user. */
 - (void)didNotComplete;
@@ -28,8 +25,8 @@ typedef enum {
  NSLog(@"AdBuddizRewardedVideoDelegate: didFail : %i - %@", error, [AdBuddiz nameForError:error]);
  }
  @endcode
- @param AdBuddizRewardedVideoError code explaining why
+ @param AdBuddizError code explaining why
  */
-- (void)didFail:(AdBuddizRewardedVideoError) error;
+- (void)didFail:(AdBuddizError) error;
 
 @end

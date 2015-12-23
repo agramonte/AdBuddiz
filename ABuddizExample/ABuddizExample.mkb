@@ -22,3 +22,10 @@ deployment
 {
 }
 
+
+#Hub deployment options, please do not add anything below this line
+subproject
+{
+    (.)
+    ABuddizExample_deployment
+}

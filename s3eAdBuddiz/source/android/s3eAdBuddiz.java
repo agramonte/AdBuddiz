@@ -53,6 +53,7 @@ class s3eAdBuddiz implements AdBuddizDelegate, AdBuddizRewardedVideoDelegate
         
         AdBuddiz.cacheAds(LoaderActivity.m_Activity);
         AdBuddiz.setDelegate(this);
+        AdBuddiz.RewardedVideo.setDelegate(this);
 
         return 0;
     }
@@ -83,7 +84,7 @@ class s3eAdBuddiz implements AdBuddizDelegate, AdBuddizRewardedVideoDelegate
 
     public void s3eAdBuddizRewardedVideoFetch()
     {
-        AdBuddiz.RewardedVideo.setDelegate(this);
+        
         AdBuddiz.RewardedVideo.fetch(LoaderActivity.m_Activity);
     }
     public void s3eAdBuddizRewardedVideoShowAd()
